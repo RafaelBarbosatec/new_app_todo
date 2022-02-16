@@ -28,4 +28,12 @@ class SignInPresenter extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  void verifyLogin(VoidCallback logged) {
+    UserRepository.getToken().then((value) {
+      if (value != null) {
+        logged();
+      }
+    });
+  }
 }
